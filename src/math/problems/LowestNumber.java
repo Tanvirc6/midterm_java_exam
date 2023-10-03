@@ -38,7 +38,7 @@ public class LowestNumber {
 		System.out.println("The values retrieved from the database are: " + retrievedNumberList);
 	}
 
-	private static int findLowestNumber(int[] array) {
+	static int findLowestNumber(int[] array) {
 		int lowestNumber = array[0]; // Initialize with the first element
 
 		for (int i = 1; i < array.length; i++) {
@@ -77,9 +77,9 @@ public class LowestNumber {
 
 	private static List<Integer> retrieveNumbersFromDatabase() {
 		// JDBC connection parameters
-		String jdbcUrl = "jdbc:mysql://localhost:3306/test";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/midterm";
 		String username = "root";
-		String password = "asdfgh";
+		String password = "123456";
 
 		List<Integer> retrievedNumberList = new ArrayList<>();
 
