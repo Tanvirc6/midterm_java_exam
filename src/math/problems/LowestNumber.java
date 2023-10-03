@@ -1,7 +1,11 @@
 package math.problems;
 
 import databases.ConnectToSqlDB;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +19,93 @@ public class LowestNumber {
 		int  array[] = new int[]{211,110,99,34,67,89,67,456,321,456,78,90,45,32,56,78,90,54,32,123,67,5,679,54,32,65};
 
 		//find lowest number from the array
+		int lowestNumber = findLowestNumber(array);
 
-		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
-		List<String> lowestValue = new ArrayList<String>();
-		try {
-			connectToSqlDB.insertDataFromArrayToSqlTable(array, "tbl_lowestNumber", "column_lowestNumber");
-			lowestValue = connectToSqlDB.readDataBase("tbl_lowestNumber", "column_lowestNumber");
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		// Store the values from the array in a list
+		List<Integer> numberList = new ArrayList<>();
+		for (int num : array) {
+			numberList.add(num);
 		}
-		System.out.println("Data is reading from the Table (tbl_primenumber) and displaying to the console");
-		for(String st:lowestValue){
-			System.out.println(st);
+
+		// Store the lowest number in the database
+		storeLowestNumberInDatabase(lowestNumber);
+
+		// Retrieve the values from the database into a list
+		List<Integer> retrievedNumberList = retrieveNumbersFromDatabase();
+
+		// Print the results
+		System.out.println("The lowest number in the array is: " + lowestNumber);
+		System.out.println("The values retrieved from the database are: " + retrievedNumberList);
+	}
+
+	private static int findLowestNumber(int[] array) {
+		int lowestNumber = array[0]; // Initialize with the first element
+
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < lowestNumber) {
+				lowestNumber = array[i]; // Update if a smaller element is found
+			}
+		}
+
+		return lowestNumber;
+	}
+
+	private static void storeLowestNumberInDatabase(int lowestNumber) {
+		// JDBC connection parameters
+		String jdbcUrl = "jdbc:mysql://localhost:3306/midterm";
+		String username = "root";
+		String password = "123456";
+
+		try {
+			// Establish a database connection
+			Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+			// Insert the lowest number into the database
+			String insertQuery = "INSERT INTO lowest_numbers (value) VALUES (?)";
+			PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+			insertStatement.setInt(1, lowestNumber);
+			insertStatement.executeUpdate();
+
+			// Close resources
+			insertStatement.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
+	private static List<Integer> retrieveNumbersFromDatabase() {
+		// JDBC connection parameters
+		String jdbcUrl = "jdbc:mysql://localhost:3306/test";
+		String username = "root";
+		String password = "asdfgh";
+
+		List<Integer> retrievedNumberList = new ArrayList<>();
+
+		try {
+			// Establish a database connection
+			Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+			// Retrieve values from the database
+			String selectQuery = "SELECT value FROM lowest_numbers";
+			PreparedStatement selectStatement = connection.prepareStatement(selectQuery);
+			ResultSet resultSet = selectStatement.executeQuery();
+
+			while (resultSet.next()) {
+				int retrievedNumber = resultSet.getInt("value");
+				retrievedNumberList.add(retrievedNumber);
+			}
+
+			// Close resources
+			resultSet.close();
+			selectStatement.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return retrievedNumberList;
+	}
 }

@@ -4,10 +4,16 @@ What is programing language?
 A.
 
 
+Answer:Programming language is set of instructructions given to the computer to complete specific task.
+
 
 
 What jdk contains or composed of and define each components?
 A.
+
+Answer:The JDK includes the Java Runtime Environment (JRE), an interpreter (java),
+a compiler (javac), an archiver (jar), a documentation generator (javadoc),
+and some other development tools.
 
 
 
@@ -16,19 +22,32 @@ A.
 What is IDE?
 A.
 
+Answer:An integrated development environment (IDE) is a software application that helps programmers
+to devolope code.
 
 
 What are the IDEs available in the market to support java?
 A.
 
+Answer:Eclipse,  Intelij, NetBeans.
 
 
 Explain the entire java life cycle.
 what is class?
+
+Answer: A class is a template used to create objects and to define object data types and methods.
 What is object?
+
+Answer: An instance of a class.
 What is the entry point of an application?
+
+Answer: main method.
 Why main is static?
+
+Answer: Main is always static, so the compiler can call it without creating an object.
 Which class is the superclass of all classes?
+
+Answer: Object Class.
 What is difference between path and classpath variables?
 What is the difference between an Interface and Abstract class?
 Can you make an Object from an Interface and Abstract class ? if not how do you use it ?
