@@ -33,32 +33,81 @@ Answer:Eclipse,  Intelij, NetBeans.
 
 
 Explain the entire java life cycle.
+
 what is class?
 
 Answer: A class is a template used to create objects and to define object data types and methods.
+
 What is object?
 
 Answer: An instance of a class.
+
 What is the entry point of an application?
 
 Answer: main method.
+
 Why main is static?
 
 Answer: Main is always static, so the compiler can call it without creating an object.
+
 Which class is the superclass of all classes?
 
 Answer: Object Class.
+
 What is difference between path and classpath variables?
+
+Answer:The "path" variable is used by the operating system and the classpath variable, on the other hand, is used in Java programming.
+
 What is the difference between an Interface and Abstract class?
+
+Answer: An abstract class is like a partially complete template for a class. An interface is like a contract that specifies a set of
+methods that a class must implement.
+
 Can you make an Object from an Interface and Abstract class ? if not how do you use it ?
+
+Answer: You cannot create objects directly from either an interface or an abstract class because they are incomplete
+and not meant to be instantiated on their own.
+
 what is Access Specifier?
+
+Answer: An access specifier, in simple terms, is like a permission slip for code.
+
 What is OOP ? Define each feature of java OOP.
+
+
+Answer: Object Oriented Object.Class and Object,Encapsulation,Inheritance,Polymorphism,Abstraction,
+Method Overriding and Overloading,Constructor and Destructor.
+
 What is Java Package and which package is imported by default?
+
+Answer: a Java package is like a folder or directory that helps organize related classes and interfaces into a group.
+By default, Java automatically imports a few packages into every Java program without you needing to explicitly write
+an import statement.
+
 What is API? Name list of API that you have used so far.
+
+Answer: Application Programming Interface.
+
 Does java support multiple inheritance, explain why or why not?
+
+Answer:Java does not support multiple inheritance in the way some other programming languages.
+
 What is method overloading and when it happens?
+
+Answers:Method overloading is a feature in Java that allows you to define multiple methods in the same class with
+the same name but different parameter lists.
+
 Explain exceptions in java and how to handle it.
+
+Answer: In Java, exceptions are unexpected or exceptional events that can occur during the execution of a program.
+try and catch and throw can be used for exceptions handling.
+
 What is static keyword in java? How it has been used in variables and methods ?
+
+
+Answer: In Java, the static keyword is used to define class-level members that belong to the class
+itself rather than to instances of the class.
+
 What is final and how it has been used variables and methods?
 What is final, finally and finalize?
 What is a constructor ?
